@@ -30,7 +30,7 @@ const TitleText = ({ text }) => {
 
   return (
     <motion.div
-      className="flex space-x-[0.5px] font-atiqua text-[15px] md:text-2xl tracking-normal"
+      className="flex space-x-[0.5px] font-atiqua text-[18px] md:text-2xl tracking-normal"
       variants={container}
       initial="hidden"
       animate="visible"

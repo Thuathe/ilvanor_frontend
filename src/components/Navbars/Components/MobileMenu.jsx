@@ -30,10 +30,10 @@ const MobileMenu = ({ isOpen, handleMenuClick, activePage }) => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -10, scale: 0.9 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          className="fixed top-[65px] right-4 w-[130px] bg-white/20 backdrop-blur-lg rounded-xl shadow-lg p-4 flex flex-col space-y-4 z-[999]"
+          className="fixed top-[65px] right-4 w-[150px] bg-white/20 backdrop-blur-lg rounded-xl shadow-lg p-4 flex flex-col space-y-4 z-[999]"
         >
           <motion.ul
-            className="flex flex-col space-y-4 text-[8px] font-poppins italic"
+            className="flex flex-col space-y-4 text-[12px] font-poppins italic"
             variants={container}
             initial="hidden"
             animate="visible"

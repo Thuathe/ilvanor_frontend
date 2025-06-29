@@ -30,7 +30,7 @@ const TitleText = ({ text }) => {
 
   return (
     <motion.div
-      className="flex space-x-[2px] font-atiqua text-2xl tracking-normal"
+      className="flex space-x-[0.5px] font-atiqua text-[15px] md:text-2xl tracking-normal"
       variants={container}
       initial="hidden"
       animate="visible"
@@ -42,7 +42,7 @@ const TitleText = ({ text }) => {
           variants={child}
           initial="hidden"
           animate="visible"
-          className="relative transition-transform duration-100 cursor-pointer animate-text-gradient hover:scale-125"
+          className="relative transition-transform duration-100 cursor-pointer hover:scale-125"
         >
           {letter}
         </motion.span>

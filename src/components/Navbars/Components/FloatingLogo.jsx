@@ -25,9 +25,9 @@ const FloatingLogo = ({ show, onClick }) => {
             onClick();
           }}
         >
-          <div className="relative flex items-center justify-center overflow-hidden transition-transform duration-100 border rounded-full shadow-2xl w-15 h-15 bg-gradient-to-br from-white/30 to-invaPurple/30 backdrop-blur-md border-white/20 hover:scale-110 animate-glow">
+          <div className="relative flex items-center justify-center w-10 h-10 overflow-hidden transition-transform duration-100 border rounded-full shadow-2xl md:w-[60px] md:h-[60px] bg-gradient-to-br from-white/30 to-invaPurple/30 backdrop-blur-[10px] border-white/20 hover:scale-110 animate-glow">
             <div className="absolute inset-0 rounded-full"></div>
-            <img src="/images/logo.png" alt="Menu Logo" className="w-10 h-10 animate-spin-slow" />
+            <img src="/images/logo.png" alt="Menu Logo" className="h-8 w-8 md:h-[45px] md:w-[45px] animate-spin-slow" />
           </div>
         </motion.div>
       )}

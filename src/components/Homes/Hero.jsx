@@ -4,62 +4,69 @@ import { ArrowRight } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section id="Beranda" className="relative w-full h-screen overflow-hidden bg-black">
-      {/* Background Video */}
-      <video
-        src="/videos/bg_beranda.mp4"
-        autoPlay
-        loop
-        muted
-        className="absolute top-0 left-0 object-cover w-full h-full"
-      />
+<section 
+  id="Beranda" 
+  className="relative w-full h-auto aspect-[20/15] md:aspect-auto md:h-screen overflow-hidden bg-black flex justify-center"
+>
+  {/* Background Image */}
+  <img 
+    src="\public\images\bg.jpg" 
+    alt="Background" 
+    className="absolute top-0 left-0 object-cover w-full h-full object-[70%] md:object-center" 
+  />
 
-      {/* Content */}
-      <div className="absolute top-0 left-0 flex items-center justify-start w-full h-full px-10 md:px-[100px]">
-        <div className="max-w-xl space-y-10 text-left">
-          {/* Judul */}
-          <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="text-4xl tracking-wider font-bold text-black font-satoshi md:text-[60px] leading-relaxed md:leading-[1]"
-          >
-            Temukan Website<br />Temukan Cerita Dibaliknya
-          </motion.h1>
+{/* Content */}
+<div className="absolute top-0 left-0 flex items-center justify-start w-full h-full px-5 md:px-[100px]">
+  <div className="max-w-[60%] md:max-w-[50%] space-y-4 text-left">
+    {/* Judul */}
+    <motion.h1
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      className="mt-[50px] md:mt-0 text-xl md:text-4xl lg:text-[45px] tracking-wider font-bold text-black font-satoshi leading-[20px] md:leading-[45px]"
+    >
+      Temukan Website<br />Temukan Cerita Dibaliknya
+    </motion.h1>
 
-          {/* Deskripsi */}
-          <motion.p
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="text-lg italic text-black md:text-[13.5px] font-poppins"
-          >
-            "Galeri digital tempat website kami hidup dan bercerita. Jelajahi karya, temukan inspirasi di setiap halaman."
-          </motion.p>
+    {/* Deskripsi */}
+    <motion.p
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.3 }}
+      className="text-[8px] md:text-base lg:text-[13.5px] italic text-black font-poppins"
+    >
+      "Galeri digital tempat website kami hidup dan bercerita. <br />
+      Jelajahi karya, temukan inspirasi di setiap halaman."
+    </motion.p>
 
-          {/* Tombol */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.1, delay: 0.5 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="relative inline-flex items-center justify-center px-8 py-3 space-x-2 overflow-hidden text-base font-medium text-black transition-all duration-300 border rounded-lg cursor-pointer bg-white/30 border-invaPurple font-poppins group"
-          >
-            {/* Ripple Fill Effect */}
-            <span className="absolute inset-0 w-0 h-0 bg-invaPurple opacity-20 rounded-full group-hover:w-72 group-hover:h-72 group-hover:opacity-40 transition-all duration-700 ease-out transform group-hover:scale-150 drop-shadow-[0_0_8px_#FF4FCB]"></span>
+    {/* Tombol */}
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.1, delay: 0.5 }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="relative inline-flex items-center justify-center px-[10px] py-[6px] space-x-2 overflow-hidden text-[8px] font-medium text-black transition-all duration-300 border rounded-lg cursor-pointer md:px-8 md:py-3 md:text-base bg-white/30 border-invaPurple font-poppins group"
+    >
+      {/* Ripple Fill Effect */}
+      <span className="absolute inset-0 w-0 h-0 bg-invaPurple opacity-20 rounded-full group-hover:w-72 group-hover:h-72 group-hover:opacity-40 transition-all duration-700 ease-out transform group-hover:scale-150 drop-shadow-[0_0_8px_#FF4FCB]"></span>
 
-            {/* Icon */}
-            <ArrowRight size={18} className="relative z-10 transition-all duration-300 group-hover:text-invaGray" />
+      {/* Icon */}
+      <ArrowRight className="relative z-10 transition-all duration-300 size-[10px] md:size-[20px] group-hover:text-invaGray text-invaPurple" />
 
-            {/* Button Text */}
-            <span className="relative z-10 transition-all duration-300 group-hover:text-invaGray">
-              Jelajahi Sekarang
-            </span>
-          </motion.div>
-        </div>
-      </div>
-    </section>
+      {/* Button Text */}
+      <span className="relative z-10 transition-all duration-300 animate-text-gradient group-hover:text-invaGray">
+        Jelajahi
+      </span>
+    </motion.div>
+  </div>
+</div>
+
+
+
+</section>
+
+
   )
 }
 

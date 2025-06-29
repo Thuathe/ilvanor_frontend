@@ -64,14 +64,14 @@ const Navbar = () => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -80, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed top-0 z-50 flex items-center justify-between w-full px-4 py-4 shadow-lg md:px-[70px] bg-invaGray bg-opacity-60 backdrop-blur-lg"
+            className="fixed top-0 z-50 flex items-center justify-between w-full px-4 py-4 shadow-lg md:px-[70px] backdrop-blur-[1px]"
           >
             {/* Logo */}
             <div className="flex items-center space-x-3 cursor-pointer font-antiqua">
               <img
                 src="/images/logo.png"
                 alt="Logo"
-                className="w-10 h-10 animate-spin-slow"
+                className="w-7 h-7 md:w-10 md:h-10 animate-spin-slow"
               />
               <TitleText text="INVANOR" />
             </div>
@@ -99,17 +99,6 @@ const Navbar = () => {
         )}
       </AnimatePresence>
 
-      {/* Garis Bawah */}
-      {showNavbar && (
-        <motion.div
-          key="navbar-line"
-          initial={{ width: 0, opacity: 0 }}
-          animate={{ width: "100%", opacity: 1 }}
-          exit={{ width: 0, opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className="h-[1px] bg-invaPurple bg-opacity-60 fixed top-[68px] w-full z-40"
-        ></motion.div>
-      )}
 
       <MobileMenu
         isOpen={isMenuOpen}

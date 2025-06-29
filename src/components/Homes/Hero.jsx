@@ -10,7 +10,7 @@ const Hero = () => {
 >
   {/* Background Image */}
   <img 
-    src="\public\images\bg.jpg" 
+    src="https://res.cloudinary.com/dq0kdch2r/image/upload/v1751185553/bg_ugpb45.jpg" 
     alt="Background" 
     className="absolute top-0 left-0 object-cover w-full h-full object-[70%] md:object-center" 
   />

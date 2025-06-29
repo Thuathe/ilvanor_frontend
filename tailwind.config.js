@@ -3,7 +3,8 @@ module.exports = {
   theme: {
     extend: {
             colors: {
-        invaPink: '#FF69B4', // ganti dengan warna pink sesuai keinginan kamu
+        invaPink: '#a855f7',
+        invaPurple: '#ec4899', // ganti dengan warna pink sesuai keinginan kamu
       },
       fontFamily: {
         invanor: ['"Uncial Antiqua"', 'cursive'], // Judul INVANOR

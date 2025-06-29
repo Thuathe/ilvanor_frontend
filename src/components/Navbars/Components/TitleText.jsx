@@ -42,7 +42,7 @@ const TitleText = ({ text }) => {
           variants={child}
           initial="hidden"
           animate="visible"
-          className="relative animate-text-gradient hover:scale-125 transition-transform duration-100 cursor-pointer"
+          className="relative transition-transform duration-100 cursor-pointer animate-text-gradient hover:scale-125"
         >
           {letter}
         </motion.span>

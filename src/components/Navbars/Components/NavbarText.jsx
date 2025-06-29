@@ -24,7 +24,7 @@ const NavbarText = ({ activePage, setActivePage }) => {
 
   return (
     <motion.ul
-      className="flex space-x-7 text-[12.5px] absolute left-1/2 transform -translate-x-1/2 font-navbar italic"
+      className="flex space-x-7 text-[12.5px] absolute left-1/2 transform -translate-x-1/2 font-poppins italic"
       variants={container}
       initial="hidden"
       animate="visible"
@@ -34,7 +34,7 @@ const NavbarText = ({ activePage, setActivePage }) => {
           key={index}
           variants={item}
           whileHover={{ scale: 1.05 }}
-          className="relative tracking-wide text-black transition-all duration-100 cursor-pointer hover:text-invaPink group"
+          className="relative tracking-wide text-black transition-all duration-100 cursor-pointer hover:text-invaPurple group"
         >
           <a
             href={`#${menu}`}
@@ -45,7 +45,7 @@ const NavbarText = ({ activePage, setActivePage }) => {
 
             {/* Garis indikator aktif */}
             {activePage === menu && (
-              <span className="absolute -bottom-[3px] left-1/2 transform -translate-x-1/2 w-full h-[0.1px] bg-invaPink rounded-full drop-shadow-[0_0_4px_#FF4FCB]"></span>
+              <span className="absolute -bottom-[3px] left-1/2 transform -translate-x-1/2 w-full h-[0.1px] bg-invaPurple rounded-full drop-shadow-[0_0_4px_#FF4FCB]"></span>
             )}
           </a>
         </motion.li>

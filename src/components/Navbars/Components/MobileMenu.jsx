@@ -33,7 +33,7 @@ const MobileMenu = ({ isOpen, handleMenuClick, activePage }) => {
           className="fixed top-[65px] right-4 w-[200px] bg-white/20 backdrop-blur-lg rounded-xl shadow-lg p-4 flex flex-col space-y-4 z-[999]"
         >
           <motion.ul
-            className="flex flex-col space-y-4 text-[13px] font-navbar italic"
+            className="flex flex-col space-y-4 text-[13px] font-poppins italic"
             variants={container}
             initial="hidden"
             animate="visible"
@@ -43,7 +43,7 @@ const MobileMenu = ({ isOpen, handleMenuClick, activePage }) => {
                 key={index}
                 variants={item}
                 whileHover={{ scale: 1.05 }}
-                className="relative tracking-wide text-black transition-all duration-100 cursor-pointer hover:text-invaPink group"
+                className="relative tracking-wide text-black transition-all duration-100 cursor-pointer hover:text-invaPurple group"
                 onClick={() => handleMenuClick(menu)}
               >
                 <a href={`#${menu}`} className="relative">
@@ -61,7 +61,7 @@ const MobileMenu = ({ isOpen, handleMenuClick, activePage }) => {
                         stiffness: 300,
                         damping: 20,
                       }}
-                      className="absolute -bottom-[3px] left-1/2 transform -translate-x-1/2 h-[0.1px] bg-invaPink rounded-full drop-shadow-[0_0_4px_#FF4FCB]"
+                      className="absolute -bottom-[3px] left-1/2 transform -translate-x-1/2 h-[0.1px] bg-invaPurple rounded-full drop-shadow-[0_0_4px_#FF4FCB]"
                     ></motion.span>
                   )}
                 </a>

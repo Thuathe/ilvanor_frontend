@@ -64,10 +64,10 @@ const Navbar = () => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -80, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed top-0 z-50 flex items-center justify-between w-full px-4 py-4 shadow-lg md:px-8 bg-invaGray bg-opacity-60 backdrop-blur-lg"
+            className="fixed top-0 z-50 flex items-center justify-between w-full px-4 py-4 shadow-lg md:px-[70px] bg-invaGray bg-opacity-60 backdrop-blur-lg"
           >
             {/* Logo */}
-            <div className="flex items-center space-x-3 cursor-pointer font-invanor">
+            <div className="flex items-center space-x-3 cursor-pointer font-antiqua">
               <img
                 src="/images/logo.png"
                 alt="Logo"
@@ -107,7 +107,7 @@ const Navbar = () => {
           animate={{ width: "100%", opacity: 1 }}
           exit={{ width: 0, opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="h-[1px] bg-invaPink bg-opacity-60 fixed top-[68px] w-full z-40"
+          className="h-[1px] bg-invaPurple bg-opacity-60 fixed top-[68px] w-full z-40"
         ></motion.div>
       )}
 

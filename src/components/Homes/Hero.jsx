@@ -10,10 +10,12 @@ const Hero = () => {
 >
   {/* Background Image */}
   <img 
-    src="https://res.cloudinary.com/dq0kdch2r/image/upload/v1751185553/bg_ugpb45.jpg" 
+    src="https://res.cloudinary.com/dq0kdch2r/image/upload/v1751190781/bg_ru3uzm.jpg" 
     alt="Background" 
     className="absolute top-0 left-0 object-cover w-full h-full object-[70%] md:object-center" 
   />
+{/* Gradient Overlay */}
+<div className="absolute top-0 left-0 w-3/4 h-full pointer-events-none bg-gradient-to-r from-black/60 to-transparent"></div>
 
 {/* Content */}
 <div className="absolute top-0 left-0 flex items-center justify-start w-full h-full px-5 md:px-[100px]">
@@ -46,17 +48,17 @@ const Hero = () => {
       transition={{ duration: 0.1, delay: 0.5 }}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className="relative inline-flex items-center justify-center px-[20px] py-[10px] space-x-2 overflow-hidden text-[15px] font-medium text-black transition-all duration-300 border rounded-lg cursor-pointer md:px-8 md:py-3 md:text-base bg-white/30 border-invaPurple font-poppins group"
+      className="relative inline-flex items-center justify-center px-[20px] py-[10px] space-x-2 overflow-hidden text-[15px]  text-black transition-all duration-300 border rounded-lg cursor-pointer md:px-8 md:py-3 md:text-md bg-white/30 border-invaPurple font-satoshi font-bold group"
     >
       {/* Ripple Fill Effect */}
-      <span className="absolute inset-0 w-0 h-0 bg-invaPurple opacity-20 rounded-full group-hover:w-72 group-hover:h-72 group-hover:opacity-40 transition-all duration-700 ease-out transform group-hover:scale-150 drop-shadow-[0_0_8px_#FF4FCB]"></span>
+      <span className="absolute inset-0 w-0 h-0 bg-white opacity-20 rounded-full group-hover:w-72 group-hover:h-72 group-hover:opacity-40 transition-all duration-700 ease-out transform group-hover:scale-150 drop-shadow-[0_0_8px_#FF4FCB]"></span>
 
       {/* Icon */}
-      <ArrowRight className="relative z-10 transition-all duration-300 size-[15px] md:size-[20px] group-hover:text-invaGray text-invaPurple" />
+      <ArrowRight className="relative z-10 transition-all duration-300 size-[15px] md:size-[20px]  text-white" />
 
       {/* Button Text */}
-      <span className="relative z-10 transition-all duration-300 animate-text-gradient group-hover:text-invaGray">
-        Jelajahi
+      <span className="relative z-10 text-white transition-all duration-300 ">
+        Jelajahi Sekarang
       </span>
     </motion.div>
   </div>

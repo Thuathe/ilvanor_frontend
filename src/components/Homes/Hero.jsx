@@ -57,9 +57,9 @@ const Hero = () => {
       <ArrowRight className="relative z-10 transition-all duration-300 size-[15px] md:size-[20px]  text-white" />
 
       {/* Button Text */}
-      <span className="relative z-10 text-white transition-all duration-300 ">
+      <a href='#WebList' className="relative z-10 text-white transition-all duration-300 ">
         Jelajahi Sekarang
-      </span>
+      </a >
     </motion.div>
   </div>
 </div>

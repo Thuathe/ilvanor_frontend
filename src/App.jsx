@@ -2,15 +2,15 @@ import React from 'react';
 import Navbar from './components/Navbars/Navbar';
 import Hero from './components/Homes/Hero';
 import Category from './components/Category';
-import WebList from './components/WebList';
-import About from './components/About';
+import WebList from './components/WebLists/WebList';
+import About from './components/Footers/About';
 
 function App() {
   return (
-    <div>
+    <div >
       <Navbar />
       <Hero />
-      <Category />
+      {/* <Category /> */}
       <WebList />
       <About />
     </div>

@@ -11,7 +11,7 @@ const FloatingLogo = ({ show, onClick }) => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -80 }}
           transition={{ duration: 0.25 }}
-          className="fixed top-4 left-1/2 transform -translate-x-1/2 z-[999] cursor-pointer group"
+          className="fixed top-4 left-[48%] transform -translate-x-1/2 z-[999] cursor-pointer group"
           onClick={(e) => {
             // Ripple Effect
             const ripple = document.createElement("span");

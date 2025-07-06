@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import TitleText from "./Components/TitleText";
 import NavbarText from "./Components/NavbarText";
@@ -6,6 +6,9 @@ import LoginText from "./Components/LoginText";
 import ToggleButton from "./Components/ToogleButton";
 import MobileMenu from "./Components/MobileMenu";
 import FloatingLogo from "./Components/FloatingLogo";
+
+import { Link } from "react-router-dom";
+import { AuthApi } from "../../LoginRegister/api/AuthApi";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,6 +18,13 @@ const Navbar = () => {
   const [activePage, setActivePage] = useState("Beranda");
   const [timeoutId, setTimeoutId] = useState(null);
 
+  // 🔥 Ambil auth gabungan dan logout universal
+  const { auth, logout } = useContext(AuthApi);
+
+  // Popup Logout
+  const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+
+  // Scroll Navbar
   const handleScroll = () => {
     if (isMenuOpen) return;
     if (window.scrollY > lastScrollY) {
@@ -44,13 +54,33 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
 
-  // Callback untuk klik logo floating
   const handleFloatingLogoClick = () => {
     setIsLogoClicked(true);
     setTimeout(() => {
       setShowNavbar(true);
       setIsLogoClicked(false);
     }, 500);
+  };
+
+  // Logout Universal
+  const handleLogout = async () => {
+    await logout(); // 🔥 Pakai logout universal
+    sessionStorage.setItem('showLogoutPopup', 'true');
+    window.location.href = '/';
+  };
+
+  // Tampilkan popup kalau ada flag
+  useEffect(() => {
+    const shouldShowPopup = sessionStorage.getItem('showLogoutPopup');
+    if (shouldShowPopup === 'true') {
+      setShowLogoutPopup(true);
+    }
+  }, []);
+
+  // Tutup popup
+  const handleLogoutNavigate = () => {
+    setShowLogoutPopup(false);
+    sessionStorage.removeItem('showLogoutPopup');
   };
 
   return (
@@ -86,10 +116,20 @@ const Navbar = () => {
 
             {/* Kanan */}
             <div className="flex items-center space-x-4">
-              <div className="">
-                <LoginText />
-              </div>
-
+              {!auth.token ? ( // 🔥 Pakai auth universal
+                <Link to="/login">
+                  <div onClick={handleLoginClick}>
+                    <LoginText />
+                  </div>
+                </Link>
+              ) : (
+                <button
+                  onClick={handleLogout}
+                  className="px-3 py-1 bg-red-500 rounded"
+                >
+                  Logout
+                </button>
+              )}
               <ToggleButton
                 isOpen={isMenuOpen}
                 toggleMenu={() => setIsMenuOpen(!isMenuOpen)}
@@ -98,7 +138,6 @@ const Navbar = () => {
           </motion.nav>
         )}
       </AnimatePresence>
-
 
       <MobileMenu
         isOpen={isMenuOpen}
@@ -111,6 +150,22 @@ const Navbar = () => {
         show={!showNavbar && !isLogoClicked}
         onClick={handleFloatingLogoClick}
       />
+
+      {/* Popup Logout */}
+      {showLogoutPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="max-w-sm p-6 text-center bg-white rounded-lg shadow-lg">
+            <h3 className="mb-4 text-xl font-bold text-green-600">Berhasil Logout</h3>
+            <p className="mb-4">Anda telah berhasil keluar.</p>
+            <button
+              onClick={handleLogoutNavigate}
+              className="px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 };

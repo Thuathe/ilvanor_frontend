@@ -9,6 +9,7 @@ import Hero from "./components/AdminPage/Homes/Hero";
 import UserList from "./components/AdminPage/UserLists/UserList";
 import CategoryList from "./components/AdminPage/CategoryLists/CategoryList";
 import WebList from "./components/AdminPage/WebLists/WebList";
+import WebDetail from "./components/AdminPage/WebLists/WeblistDetail";
 import AdminProfile from "./components/AdminPage/AdminProfiles/AdminProfile";
 
 import UserPage from "./components/UserPage/UserPage";
@@ -76,9 +77,10 @@ function AppContent() {
             }
           >
             <Route index element={<Hero />} />
-            <Route path="users" element={<UserList />} />
+            <Route path="users" eli7bement={<UserList />} />
             <Route path="categories" element={<CategoryList />} />
             <Route path="weblists" element={<WebList />} />
+            <Route path="weblists/:id" element={<WebDetail />} />
             <Route path="profils" element={<AdminProfile />} />
           </Route>
 

@@ -1,15 +1,13 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import Navbar from "./Navbars/Navbar";
-import Hero from "./Homes/Hero";
-import WebList from "./WebLists/WebList";
 import About from "./Footers/About";
 
 const UserPage = () => {
   return (
     <div>
       <Navbar />
-      <Hero />
-      <WebList />
+      <Outlet /> {/* Semua konten halaman user akan muncul di sini */}
       <About />
     </div>
   );

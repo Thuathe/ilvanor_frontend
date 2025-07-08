@@ -13,6 +13,8 @@ import WebDetail from "./components/AdminPage/WebLists/WeblistDetail";
 import AdminProfile from "./components/AdminPage/AdminProfiles/AdminProfile";
 
 import UserPage from "./components/UserPage/UserPage";
+import UserHome from "./components/UserPage/UserHome";
+import WebListDetail from "./components/UserPage/WebLists/WebListDetail";
 import HomePage from "./components/UserPage/HomePage";
 
 import PrivateRoute from "./components/LoginRegister/pages/components/PrivateRoute";
@@ -92,7 +94,10 @@ function AppContent() {
                 <UserPage />
               </PrivateRoute>
             }
-          />
+          >
+            <Route index element={<UserHome />} />
+            <Route path="weblists/:id" element={<WebListDetail />} />
+          </Route>
         </Routes>
 
         <ToastContainer />

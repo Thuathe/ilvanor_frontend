@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart } from 'lucide-react';
 import { AuthApi } from "../../LoginRegister/api/AuthApi";
+import { useNavigate } from "react-router-dom"; // Tambahkan di atas
 
 const WebList = () => {
   const { apiRequest } = useContext(AuthApi);
@@ -11,6 +12,7 @@ const WebList = () => {
   const [visibleCount, setVisibleCount] = useState(6);
   const [indicatorStyle, setIndicatorStyle] = useState({ width: 0, left: 0 });
   const buttonsRef = useRef({});
+  const navigate = useNavigate(); // Tambahkan dalam komponen
 
   // Fetch Weblist dari API
   const fetchWeblists = async () => {
@@ -122,6 +124,7 @@ const WebList = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.4 }}
+  onClick={() => navigate(`/user/weblists/${product.id}`)}
               className="flex flex-col overflow-hidden text-black transition-transform duration-300 transform shadow-lg bg-white/20 rounded-2xl hover:scale-105 hover:shadow-2xl"
             >
               {/* Gambar Website */}

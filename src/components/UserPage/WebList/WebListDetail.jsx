@@ -17,7 +17,7 @@ const WebDetailPage = () => {
 
   const fetchWebDetail = async () => {
     try {
-      const res = await apiRequest(`weblists/${id}`, 'GET');
+      const res = await apiRequest(`explore-weblist/${id}`, 'GET');
       setData(res.data);
     } catch (err) {
       console.error("Gagal ambil detail:", err);

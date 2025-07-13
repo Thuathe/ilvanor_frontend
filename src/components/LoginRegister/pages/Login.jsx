@@ -3,7 +3,7 @@ import { useNavigate, Link, useLocation } from "react-router-dom";
 import { AuthApi } from "../api/AuthApi";
 import { ClipLoader } from "react-spinners";
 import { toast } from "react-toastify";
-
+import routes from "../../../routes";
 const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [isButtonLoading, setIsButtonLoading] = useState(false);
@@ -27,9 +27,9 @@ const Login = () => {
       toast.success("Login berhasil!");
 
       if (isAdminLogin) {
-        navigate("/admin");
+        navigate(routes.admin);
       } else {
-        navigate("/user");
+        navigate(routes.user);
       }
     } catch (error) {
       toast.error(error.response?.data?.message || "Login gagal!");
@@ -76,7 +76,7 @@ const Login = () => {
         {!isAdminLogin && (
           <div className="mt-6 text-center">
             <span className="text-gray-600">Belum punya akun? </span>
-            <Link to="/register" className="font-semibold text-purple-600 hover:underline">
+            <Link to={routes.register} className="font-semibold text-purple-600 hover:underline">
               Daftar di sini
             </Link>
           </div>

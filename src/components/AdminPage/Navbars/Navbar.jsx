@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AuthApi } from '../../LoginRegister/api/AuthApi';
-
+import routes from '../../../routes';
 const AdminNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { logout } = useContext(AuthApi);
@@ -31,11 +31,11 @@ const AdminNavbar = () => {
           </div>
 
           <div className="items-center hidden space-x-8 md:flex">
-            <Link to="/admin" className="hover:underline">Home</Link>
-            <Link to="/admin/users" className="hover:underline">Data User</Link>
-            <Link to="/admin/categories" className="hover:underline">Kategori</Link>
-            <Link to="/admin/weblists" className="hover:underline">Data Gambar</Link>
-            <Link to="/admin/profils" className="hover:underline">Profil</Link>
+            <Link to={routes.admin} className="hover:underline">Home</Link>
+            <Link to={routes.adminUsers} className="hover:underline">Data User</Link>
+            <Link to={routes.adminCategory} className="hover:underline">Kategori</Link>
+            <Link to={routes.adminWeblist} className="hover:underline">Data Gambar</Link>
+            <Link to={routes.adminProfile} className="hover:underline">Profil</Link>
             <button
               onClick={handleLogout}
               className="px-3 py-1 bg-red-500 rounded hover:bg-red-600"
@@ -67,10 +67,10 @@ const AdminNavbar = () => {
 
       {isMenuOpen && (
         <div className="p-4 space-y-4 text-white bg-purple-700 md:hidden">
-          <Link to="/admin" onClick={() => setIsMenuOpen(false)}>Home</Link>
-          <Link to="/admin/users" onClick={() => setIsMenuOpen(false)}>Data User</Link>
-          <Link to="/admin/categories" onClick={() => setIsMenuOpen(false)}>Kategori</Link>
-          <Link to="/admin/weblists" onClick={() => setIsMenuOpen(false)}>Data Gambar</Link>
+          <Link to={routes.admin} onClick={() => setIsMenuOpen(false)}>Home</Link>
+          <Link to={routes.adminUsers} onClick={() => setIsMenuOpen(false)}>Data User</Link>
+          <Link to={routes.adminCategory} onClick={() => setIsMenuOpen(false)}>Kategori</Link>
+          <Link to={routes.adminWeblist} onClick={() => setIsMenuOpen(false)}>Data Gambar</Link>
           <button
             onClick={handleLogout}
             className="block w-full px-3 py-1 bg-red-500 rounded hover:bg-red-600"

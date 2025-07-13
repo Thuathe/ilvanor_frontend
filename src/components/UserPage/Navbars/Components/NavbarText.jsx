@@ -1,8 +1,17 @@
 import React from "react";
 import { motion } from "framer-motion";
-
+import { useNavigate } from "react-router-dom";
+import routes from "../../../../routes";
 const NavbarText = ({ activePage, setActivePage }) => {
-  const menuItems = ["Beranda", "Kategori", "Tentang Kami"];
+  const navigate = useNavigate();
+
+  const menuItems = [
+    { name: "Beranda", link: routes.user },
+    { name: "Kategori", link: routes.user },
+    { name: "Tentang Kami", link: "#about" },
+    { name: "Profil", link: routes.userProfile },
+    { name: "WebUp", link: routes.userWeblist },
+  ];
 
   const container = {
     hidden: { opacity: 0 },
@@ -22,6 +31,16 @@ const NavbarText = ({ activePage, setActivePage }) => {
     },
   };
 
+  const handleClick = (menu) => {
+    setActivePage(menu.name);
+
+    // Kalau link diawali dengan "#", berarti scroll lokal
+    if (menu.link.startsWith("#")) return;
+
+    // Kalau link biasa (bukan anchor), redirect
+    navigate(menu.link);
+  };
+
   return (
     <motion.ul
       className="flex space-x-7 text-[12.5px] absolute left-1/2 transform -translate-x-1/2 font-poppins italic"
@@ -36,18 +55,29 @@ const NavbarText = ({ activePage, setActivePage }) => {
           whileHover={{ scale: 1.05 }}
           className="relative tracking-wide text-black transition-all duration-100 cursor-pointer hover:text-invaPurple group"
         >
-          <a
-            href={`#${menu}`}
-            onClick={() => setActivePage(menu)}
-            className="relative"
-          >
-            {menu}
-
-            {/* Garis indikator aktif */}
-            {activePage === menu && (
-              <span className="absolute -bottom-[3px] left-1/2 transform -translate-x-1/2 w-full h-[0.1px] bg-invaPurple rounded-full drop-shadow-[0_0_4px_#FF4FCB]"></span>
-            )}
-          </a>
+          {/* Hybrid: href untuk #anchor, navigate untuk page */}
+          {menu.link.startsWith("#") ? (
+            <a
+              href={menu.link}
+              onClick={() => handleClick(menu)}
+              className="relative"
+            >
+              {menu.name}
+              {activePage === menu.name && (
+                <span className="absolute -bottom-[3px] left-1/2 transform -translate-x-1/2 w-full h-[0.1px] bg-invaPurple rounded-full drop-shadow-[0_0_4px_#FF4FCB]"></span>
+              )}
+            </a>
+          ) : (
+            <button
+              onClick={() => handleClick(menu)}
+              className="relative outline-none"
+            >
+              {menu.name}
+              {activePage === menu.name && (
+                <span className="absolute -bottom-[3px] left-1/2 transform -translate-x-1/2 w-full h-[0.1px] bg-invaPurple rounded-full drop-shadow-[0_0_4px_#FF4FCB]"></span>
+              )}
+            </button>
+          )}
         </motion.li>
       ))}
     </motion.ul>

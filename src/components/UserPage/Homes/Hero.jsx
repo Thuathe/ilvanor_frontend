@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 const Hero = () => {
   return (
 <section 
-  id="Beranda" 
+  id="home" 
   className="relative w-full h-auto aspect-[10/11] md:aspect-auto md:h-screen overflow-hidden bg-black flex justify-center"
 >
   {/* Background Image */}
@@ -57,7 +57,7 @@ const Hero = () => {
       <ArrowRight className="relative z-10 transition-all duration-300 size-[15px] md:size-[20px]  text-white" />
 
       {/* Button Text */}
-      <a href='#WebList' className="relative z-10 text-white transition-all duration-300 ">
+      <a href='#weblist' className="relative z-10 text-white transition-all duration-300 ">
         Jelajahi Sekarang
       </a >
     </motion.div>

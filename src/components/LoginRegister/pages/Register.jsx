@@ -2,6 +2,7 @@ import React, { useContext, useState, useRef, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { AuthApi } from "../api/AuthApi";
 import { ClipLoader } from "react-spinners";
+import routes from "../../../routes";
 
 const Register = () => {
   const [form, setForm] = useState({
@@ -72,7 +73,7 @@ const Register = () => {
 
   const handleNavigate = () => {
     setTimeout(() => {
-      navigate("/login");
+      navigate(routes.login);
     }, 300); // Sedikit delay biar smooth
   };
 
@@ -155,7 +156,7 @@ const Register = () => {
 
         <div className="mt-6 text-center">
           <span className="text-gray-600">Sudah punya akun? </span>
-          <Link to="/login" className="font-semibold text-purple-600 hover:underline">
+          <Link to={routes.login} className="font-semibold text-purple-600 hover:underline">
             Login di sini
           </Link>
         </div>

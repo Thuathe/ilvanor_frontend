@@ -27,7 +27,7 @@ const WebDetail = () => {
   const fetchWebDetail = async () => {
     setLoading(true);
     try {
-      const res = await apiRequest(`admin/weblists/${id}`, 'GET');
+      const res = await apiRequest(`admin/weblist/${id}`, 'GET');
       const detail = res.data.weblist_detail || {};
 
       setWeb({
@@ -53,7 +53,7 @@ const WebDetail = () => {
     setSubmitLoading(true);
 
     try {
-await apiRequest(`admin/weblists/${id}/detail`, 'PUT', {
+await apiRequest(`admin/weblist/${id}/detail`, 'POST', {
   title: web.title,
   category_id: web.category_id,
   description,
@@ -73,34 +73,6 @@ await apiRequest(`admin/weblists/${id}/detail`, 'PUT', {
     }
   };
 
-  const handleUploadCarousel = async (e) => {
-    e.preventDefault();
-    if (carouselFiles.length === 0) return showError('Pilih minimal satu gambar carousel.');
-
-    setCarouselLoading(true);
-
-    const formData = new FormData();
-    formData.append('title', web.title);
-    formData.append('category_id', web.category_id);
-    formData.append('description', description);
-    formData.append('features', features ? JSON.stringify(features.split(',').map(f => f.trim())) : '[]');
-    formData.append('tech_stack', techStack);
-    formData.append('price', price);
-    formData.append('website_link', websiteLink);
-    carouselFiles.forEach(file => formData.append('carousel_images[]', file));
-
-    try {
-      await apiRequest(`admin/weblists/${id}/images`, 'POST', formData, true);
-      showSuccess('Gambar carousel berhasil diupload.');
-      setCarouselFiles([]);
-      document.getElementById('carouselInput').value = '';
-      fetchWebDetail();
-    } catch (error) {
-      showError(error?.data?.message || 'Gagal upload carousel.');
-    } finally {
-      setCarouselLoading(false);
-    }
-  };
 
   const handleDeleteCarousel = async (imageId) => {
     if (!window.confirm('Yakin mau menghapus gambar ini?')) return;
@@ -108,7 +80,7 @@ await apiRequest(`admin/weblists/${id}/detail`, 'PUT', {
     setDeleteLoadingId(imageId);
 
     try {
-      await apiRequest(`admin/weblists/images/${imageId}`, 'DELETE');
+      await apiRequest(`admin/weblist/images/${imageId}`, 'DELETE');
       showSuccess('Gambar carousel berhasil dihapus.');
       fetchWebDetail();
     } catch (error) {
@@ -146,14 +118,6 @@ await apiRequest(`admin/weblists/${id}/detail`, 'PUT', {
         <input type="url" placeholder="Website Link" value={websiteLink} onChange={(e) => setWebsiteLink(e.target.value)} className="p-2 border rounded" />
         <button type="submit" disabled={submitLoading} className={`px-4 py-2 text-white rounded ${submitLoading ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'}`}>
           {submitLoading ? 'Loading...' : 'Update Detail'}
-        </button>
-      </form>
-
-      {/* Upload Carousel */}
-      <form onSubmit={handleUploadCarousel} className="flex flex-col max-w-xl p-6 mx-auto mb-8 space-y-4 bg-white rounded shadow">
-        <input id="carouselInput" type="file" multiple onChange={(e) => setCarouselFiles([...e.target.files])} className="p-2 border rounded" />
-        <button type="submit" disabled={carouselLoading} className={`px-4 py-2 text-white rounded ${carouselLoading ? 'bg-gray-400' : 'bg-green-500 hover:bg-green-600'}`}>
-          {carouselLoading ? 'Uploading...' : 'Upload Carousel'}
         </button>
       </form>
 

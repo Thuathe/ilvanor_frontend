@@ -1,6 +1,6 @@
 import React from "react";
 import Hero from "./Homes/Hero";
-import WebList from "./WebLists/WebList";
+import WebList from "./WebList/WebList";
 
 const UserHome = () => {
   return (

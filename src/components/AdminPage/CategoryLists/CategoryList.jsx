@@ -3,7 +3,7 @@ import { AuthApi } from "../../LoginRegister/api/AuthApi";
 
 const CategoryList = () => {
   const { apiRequest } = useContext(AuthApi);
-  const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState([]);
   const [name, setName] = useState('');
   const [editId, setEditId] = useState(null);
 
@@ -11,17 +11,17 @@ const CategoryList = () => {
   const [popup, setPopup] = useState({ show: false, message: '', type: 'success' });
 
   // Ambil semua kategori
-const fetchCategories = async () => {
+const fetchCategory = async () => {
   setLoading(true);
   try {
-    const response = await apiRequest('admin/categories', 'GET');
+    const response = await apiRequest('admin/category', 'GET');
     console.log('✅ Response:', response); // Cek isinya
 
     // Ubah di sini:
-    setCategories(response.data); // Kalau hasil console berupa { status, message, data }
+    setCategory(response.data); // Kalau hasil console berupa { status, message, data }
 
     // Kalau hasil console berupa array langsung, cukup pakai ini:
-    // setCategories(response);
+    // setCategory(response);
 
   } catch (error) {
     showPopup(error.response?.data?.message || 'Gagal mengambil kategori!', 'error');
@@ -33,7 +33,7 @@ const fetchCategories = async () => {
 
 
   useEffect(() => {
-    fetchCategories();
+    fetchCategory();
   }, []);
 
   const handleSubmit = async (e) => {
@@ -46,16 +46,16 @@ const fetchCategories = async () => {
 
     try {
       if (editId) {
-        await apiRequest(`admin/categories/${editId}`, 'PUT', { name });
+        await apiRequest(`admin/category/${editId}`, 'POST', { name });
         showPopup('Kategori berhasil diupdate!', 'success');
       } else {
-        await apiRequest('admin/categories', 'POST', { name });
+        await apiRequest('admin/category', 'POST', { name });
         showPopup('Kategori berhasil ditambahkan!', 'success');
       }
 
       setName('');
       setEditId(null);
-      fetchCategories();
+      fetchCategory();
     } catch (error) {
       showPopup(error.response?.data?.message || 'Gagal menyimpan kategori!', 'error');
       console.error('❌ Gagal menyimpan kategori:', error.response?.data || error.message);
@@ -66,9 +66,9 @@ const fetchCategories = async () => {
     if (!window.confirm('Apakah kamu yakin ingin menghapus kategori ini?')) return;
 
     try {
-      await apiRequest(`admin/categories/${id}`, 'DELETE');
+      await apiRequest(`admin/category/${id}`, 'DELETE');
       showPopup('Kategori berhasil dihapus!', 'success');
-      fetchCategories();
+      fetchCategory();
     } catch (error) {
       showPopup(error.response?.data?.message || 'Gagal menghapus kategori!', 'error');
       console.error('❌ Gagal menghapus kategori:', error.response?.data || error.message);
@@ -116,8 +116,8 @@ const fetchCategories = async () => {
 
       {/* List */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-        {categories.length > 0 ? (
-          categories.map((category) => (
+        {category.length > 0 ? (
+          category.map((category) => (
             <div key={category.id} className="flex items-center justify-between p-4 bg-white rounded shadow">
               <span>{category.name}</span>
               <div className="flex space-x-2">

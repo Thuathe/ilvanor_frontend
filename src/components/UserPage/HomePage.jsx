@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./Navbars/Navbar";
 import Hero from "./Homes/Hero";
-import WebListBeforeLogin from "./WebLists/WebListBeforeLogin";
+import WebListBeforeLogin from "./WebList/WebListBeforeLogin";
 import About from "./Footers/About";
 
 const HomePage = () => {

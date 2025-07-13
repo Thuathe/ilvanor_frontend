@@ -1,9 +1,18 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import LoginText from "./LoginText";
-
+import routes from "../../../../routes";
 const MobileMenu = ({ isOpen, handleMenuClick, activePage }) => {
-  const menuItems = ["Beranda", "Kategori", "Tentang Kami"];
+  const navigate = useNavigate();
+
+  const menuItems = [
+    { name: "Beranda", link: routes.user },
+    { name: "Kategori", link: routes.user },
+    { name: "Tentang Kami", link: "#about" },
+    { name: "Profil", link: routes.userProfile },
+    { name: "WebUp", link: routes.userWeblist},
+  ];
 
   const container = {
     hidden: { opacity: 0 },
@@ -20,6 +29,12 @@ const MobileMenu = ({ isOpen, handleMenuClick, activePage }) => {
       y: 0,
       transition: { type: "spring", stiffness: 300, damping: 20 },
     },
+  };
+
+  const handleClick = (menu) => {
+    handleMenuClick(menu.name); // setActivePage
+    if (menu.link.startsWith("#")) return; // scroll ke anchor
+    navigate(menu.link); // route biasa
   };
 
   return (
@@ -44,32 +59,56 @@ const MobileMenu = ({ isOpen, handleMenuClick, activePage }) => {
                 variants={item}
                 whileHover={{ scale: 1.05 }}
                 className="relative tracking-wide text-black transition-all duration-100 cursor-pointer hover:text-invaPurple group"
-                onClick={() => handleMenuClick(menu)}
               >
-                <a href={`#${menu}`} className="relative">
-                  {menu}
-
-                  {/* Garis indikator aktif */}
-                  {activePage === menu && (
-                    <motion.span
-                      key={menu} // penting untuk re-render saat ganti menu
-                      initial={{ width: 0 }}
-                      animate={{ width: "100%" }}
-                      exit={{ width: 0 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 20,
-                      }}
-                      className="absolute -bottom-[3px] left-1/2 transform -translate-x-1/2 h-[0.1px] bg-invaPurple rounded-full drop-shadow-[0_0_4px_#FF4FCB]"
-                    ></motion.span>
-                  )}
-                </a>
+                {menu.link.startsWith("#") ? (
+                  <a
+                    href={menu.link}
+                    onClick={() => handleClick(menu)}
+                    className="relative"
+                  >
+                    {menu.name}
+                    {activePage === menu.name && (
+                      <motion.span
+                        key={menu.name}
+                        initial={{ width: 0 }}
+                        animate={{ width: "100%" }}
+                        exit={{ width: 0 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 20,
+                        }}
+                        className="absolute -bottom-[3px] left-1/2 transform -translate-x-1/2 h-[0.1px] bg-invaPurple rounded-full drop-shadow-[0_0_4px_#FF4FCB]"
+                      ></motion.span>
+                    )}
+                  </a>
+                ) : (
+                  <button
+                    onClick={() => handleClick(menu)}
+                    className="relative outline-none"
+                  >
+                    {menu.name}
+                    {activePage === menu.name && (
+                      <motion.span
+                        key={menu.name}
+                        initial={{ width: 0 }}
+                        animate={{ width: "100%" }}
+                        exit={{ width: 0 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 20,
+                        }}
+                        className="absolute -bottom-[3px] left-1/2 transform -translate-x-1/2 h-[0.1px] bg-invaPurple rounded-full drop-shadow-[0_0_4px_#FF4FCB]"
+                      ></motion.span>
+                    )}
+                  </button>
+                )}
               </motion.li>
             ))}
           </motion.ul>
 
-          {/* LoginText */}
+          {/* LoginText (auth / tombol login) */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}

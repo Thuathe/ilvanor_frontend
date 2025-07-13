@@ -3,7 +3,7 @@ import { FaFacebookF, FaInstagram, FaTwitter, FaPinterestP } from 'react-icons/f
 
 const About = () => {
   return (
-    <footer id="Tentang Kami" className="flex flex-col items-center w-full px-8 py-8 border-t bg-gradient-to-b from-blue-300 to-blue-100 backdrop-blur-lg ">
+    <footer id="about" className="flex flex-col items-center w-full px-8 py-8 border-t bg-gradient-to-b from-blue-300 to-blue-100 backdrop-blur-lg ">
 
       {/* Bagian Atas */}
       <div className="flex flex-col items-center justify-between w-full mb-4 md:flex-row max-w-7xl">

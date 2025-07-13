@@ -9,6 +9,7 @@ import FloatingLogo from "./Components/FloatingLogo";
 
 import { Link } from "react-router-dom";
 import { AuthApi } from "../../LoginRegister/api/AuthApi";
+import routes from "../../../routes";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -117,7 +118,7 @@ const Navbar = () => {
             {/* Kanan */}
             <div className="flex items-center space-x-4">
               {!auth.token ? ( // 🔥 Pakai auth universal
-                <Link to="/login">
+                <Link to={routes.login}>
                   <div onClick={handleLoginClick}>
                     <LoginText />
                   </div>
@@ -144,6 +145,7 @@ const Navbar = () => {
         handleMenuClick={handleMenuClick}
         activePage={activePage}
       />
+
 
       {/* Floating Logo */}
       <FloatingLogo
